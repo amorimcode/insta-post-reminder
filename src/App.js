@@ -1,7 +1,16 @@
 import { Notifyer } from './Notifyer.js'
 
 const App = {
-    start() {
+    async start() {
+        try {
+            await Notifyer.init()
+            Notifyer.notify({
+                title: 'Time to post',
+                body: "Create some content to help your community."
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 }
 
