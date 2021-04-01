@@ -1,6 +1,7 @@
+import { Notifyer } from './Notifyer.js'
+
 const App = {
     start() {
-        console.log('started')
     }
 }
 
