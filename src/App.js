@@ -5,12 +5,18 @@ import { Emitter } from './Emitter.js'
 const App = {
     async start() {
         try {
-            Timer.init()
-            // await Notifyer.init()
-            // Notifyer.notify({
-            //     title: 'Time to post',
-            //     body: "Create some content to help your community."
-            // })
+
+            await Notifyer.init()
+            Emitter.on('countdown-start', () => {
+                Notifyer.notify({
+                    title: 'Time to post',
+                    body: "Create some content to help your community."
+                })
+            })
+
+            Timer.init(0.1 * 60)
+
+
         } catch (err) {
             console.log(err.message)
         }

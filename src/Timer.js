@@ -1,5 +1,5 @@
 import { View } from './View.js'
-
+import { Emitter } from './Emitter.js'
 const Timer = {
     time: 60 * 60,
     currentTime: 0,
@@ -11,6 +11,7 @@ const Timer = {
     formatTime: time => String(time).padStart(2, '0'),
 
     init(time) {
+        Emitter.emit('countdown-start')
         Timer.time = time || Timer.time
         Timer.currentTime = Timer.time
         // setInterval = executa a função countdown() a cada 1000 milisegundos
