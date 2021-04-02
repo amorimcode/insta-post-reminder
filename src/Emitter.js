@@ -11,8 +11,6 @@ const Emitter = {
             return;
         }
 
-        console.log('O rest é ', rest)
-
         Emitter.events[event].forEach((e) => {
             e(...rest)
         })
