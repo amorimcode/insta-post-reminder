@@ -1,7 +1,15 @@
 const Emitter = {
+    events: {},
 
+
+    on(event, cb) {
+        Emitter.events[event] = cb
+        console.log(Emitter.events)
+    }
 }
-console.log("emitter")
 
+Emitter.on('click', () => console.log("cliquei"))
+
+Emitter.events.click()
 
 export { Emitter }
