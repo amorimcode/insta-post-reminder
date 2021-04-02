@@ -3,8 +3,8 @@ import { Timer } from './Timer.js'
 
 const App = {
     async start() {
-        Timer.init({})
         try {
+            Timer.init()
             // await Notifyer.init()
             // Notifyer.notify({
             //     title: 'Time to post',
