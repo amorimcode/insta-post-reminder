@@ -1,17 +1,39 @@
+import { View } from './View.js'
+
 const Timer = {
     time: 0.1 * 60,
     currentTime: 0,
     interval: null,
+
+    timeToMinutes: time =>  Math.floor(time / 60),
+    timeToSeconds: time =>  time % 60,
+
+    formatTime: time => String(time).padStart(2, '0'),
+
     init() {
         Timer.currentTime = Timer.time
-        console.log(Timer.currentTime)
         // setInterval = executa a função countdown() a cada 1000 milisegundos
-        setInterval(Timer.countdown, 1000)
+        Timer.interval = setInterval(Timer.countdown, 1000)
+
     },
 
     countdown() {
         Timer.currentTime = Timer.currentTime - 1 
-        console.log(Timer.currentTime)
+
+        const minutes = Timer.formatTime(Timer.timeToMinutes(Timer.currentTime))
+        const seconds = Timer.formatTime(Timer.timeToSeconds(Timer.currentTime))
+        console.log(Timer.formatTime(minutes), ":", Timer.formatTime(seconds))
+
+        View.render({
+            // Object Property Shorthand
+            minutes,
+            seconds
+        })
+
+        if(Timer.currentTime === 0) {
+            clearInterval(Timer.interval)
+            return;
+        }
     }
 }
 
