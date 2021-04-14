@@ -3,8 +3,10 @@ const { app } = require('electron')
 const path = require('path')
 
 function App() {
- createWindow()
+//  createWindow()
  const win = require('./createWindow')
+ const tray = require('./Tray.js')
+
 }
 
 app.whenReady().then(app)
@@ -14,3 +16,5 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+app.dock.hide()
