@@ -1,20 +1,19 @@
-const { create } = require('domain')
 const { app } = require('electron')
-const path = require('path')
+const controlWindow = require('./ControlWindow.js')
 
 function App() {
-//  createWindow()
- const win = require('./createWindow')
- const tray = require('./Tray.js')
+  const win = require('./createWindow.js')
+  const tray = require('./Tray.js')
 
+  const { toggle } = controlWindow(win, tray)
+
+  tray.on('click', toggle)
 }
 
-app.whenReady().then(app)
+app.whenReady().then(App)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
-
-app.dock.hide()
