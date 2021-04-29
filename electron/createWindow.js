@@ -8,8 +8,8 @@ function createWindow () {
     frame: false,
     resizable: false,
     fullscreenable: false,
+    skipTaskbar: true,
   })
-
   win.loadFile('index.html')
   
   return win
