@@ -1,3 +1,4 @@
+
 const { BrowserWindow } = require('electron')
 
 function createWindow () {
@@ -10,7 +11,10 @@ function createWindow () {
     fullscreenable: false,
     skipTaskbar: true,
   })
+
   win.loadFile('index.html')
+
+  win.on('blur', () => win.hide())
   
   return win
 }

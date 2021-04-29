@@ -1,3 +1,4 @@
+
 const { app } = require('electron')
 const controlWindow = require('./ControlWindow.js')
 
@@ -17,3 +18,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+if (process.platform === 'darwin') {
+  app.dock.hide()
+}
